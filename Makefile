@@ -4,7 +4,7 @@ LD = ld
 XCRUN = xcrun
 
 build-main: build-dir
-	$(AS) -Wall -g -o build/main -c src/main.s
+	$(AS) -Wall -g -o build/main.o -c src/main.s
 	$(LD) -o build/main build/main.o -lSystem -syslibroot `$(XCRUN) -sdk macosx --show-sdk-path`
 
 check:
