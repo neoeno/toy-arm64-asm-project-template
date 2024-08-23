@@ -1,10 +1,10 @@
-AS = as
+AS = clang # We'll use clang as an assembler, simplifying a few things
 DBG = lldb
 LD = ld
 XCRUN = xcrun
 
 build-main: build-dir
-	$(AS) -Wall -g -o build/main.o src/main.s
+	$(AS) -Wall -g -o build/main -c src/main.s
 	$(LD) -o build/main build/main.o -lSystem -syslibroot `$(XCRUN) -sdk macosx --show-sdk-path`
 
 check:

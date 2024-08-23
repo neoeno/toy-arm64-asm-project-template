@@ -3,11 +3,11 @@
 
 _main:
   adr X1, message // Load the address of the message into register X1
-  mov X2, 14      // Load the length of the message into register X2
-  bl print        // Call the print function
+  mov X2, #14     // Put the length of the message into register X2
+  bl print        // Call the print subroutine
 
-  mov X0, #0      // Load the exit code into register X0
-  b exit          // Call the exit function
+  mov X0, #0      // Put the exit code into register X0
+  b exit          // Jump to the exit subroutine
 
 print:        // Pass in: X1 = message, X2 = length
   mov X16, #4 // 4 = specify the 'write' syscall
@@ -17,7 +17,7 @@ print:        // Pass in: X1 = message, X2 = length
 
 exit:         // Pass in: X0 = exit code
   mov X16, #1 // 1 = specify the 'exit' syscall
-  svc #0x80   // Execute the syscall
+  svc #0x80   // Execute the syscall, terminating the program
 
 // Note we're not using the .data section to simplify a few things in this
 // example. If you want to use it, consult this stackoverflow answer:
@@ -25,5 +25,6 @@ exit:         // Pass in: X0 = exit code
 
 // Otherwise, you can use labels and the .ascii directive to define strings
 // And `adr` to load the address of the string into a register
-message: .ascii "Hello, world!\n"
+message:
+  .ascii "Hello, world!\n"
 

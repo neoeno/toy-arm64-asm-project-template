@@ -30,7 +30,7 @@ on any dev-ready mac.
 ; make debug
 ```
 
-Note that a professional project would probably not use Make for all of these tasks.
+Note that a professional project would probably not use `make` for all of these tasks.
 
 ## How to write code
 
